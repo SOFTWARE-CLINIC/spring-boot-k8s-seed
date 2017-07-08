@@ -80,4 +80,11 @@
         <tag>HEAD</tag>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>java-io-tmpdir</id>
+            <url>file://${java.io.tmpdir}</url>
+        </repository>
+    </distributionManagement>
+
 </project>
