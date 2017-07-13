@@ -7,7 +7,7 @@
 ## Running as a Java application
 
 ```
-$ mvn package && java -jar target/spring-boot-k8s-seed-0.0.1-SNAPSHOT.jar
+$ mvn package && java -jar target/spring-boot-k8s-seed.jar
 ```
 
 ## Running as a Docker container
@@ -17,7 +17,13 @@ $ mvn package docker:build
 ```
 
 ```
-$ docker run -p 8080:8080 -t danielpacak/spring-boot-k8s-seed
+$ docker run -p 8080:8080 -t danielpacak/spring-boot-k8s-seed:${project.version}
+```
+
+## Publishing an image to Docker Hub repository
+
+```
+$ docker push danielpacak/spring-boot-k8s-seed:${project.version}
 ```
 
 ## Running on Kubernetes
