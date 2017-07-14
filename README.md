@@ -28,34 +28,37 @@ $ docker push danielpacak/spring-boot-k8s-seed:${project.version}
 
 ## Running on Kubernetes
 
-Start Minikube cluster.
+Start Minikube cluster:
 
 ```
 $ minikube start
 ```
 
-Use Minikube Docker daemon and build the Docker image.
+Use Minikube Docker daemon and build the Docker image:
 
 ```
 $ eval $(minikube docker-env)
 $ mvn clean package docker:build
 ```
 
-Create the `spring-boot-k8s-seed` deployment.
+Create k8s resources:
 
 ```
-$ kubectl run spring-boot-k8s-seed --image=danielpacak/spring-boot-k8s-seed:0.0.1-SNAPSHOT --port=8080
+$ kubectl create -f k8s/spring-boot-k8s-seed.yml
 ```
 
-Expose the `spring-bookt-k8s-seed` deployment as the `spring-boot-k8s-seed` service.
+Open k8s dashboard with the `minikube dashboard` command and make sure that all resources have been created.
+If everything goes well you should be able to access the app opened in the default web browser
+by the following command:
 
 ```
-$ kubectl expose deployment spring-boot-k8s-seed --type=LoadBalancer
+$ minikube service spring-boot-service -n spring-boot
 ```
 
-```
-$ minikube service spring-book-k8s-seed
-```
+> In order to cleanup k8s resources that you have created in the previous step, simply run:
+> ```
+> $ kubectl delete -f k8s/spring-boot-k8s-seed.yml
+> ```
 
 ## Reference
 

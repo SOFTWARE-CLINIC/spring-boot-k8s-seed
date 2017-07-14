@@ -35,6 +35,8 @@ spec:
       - name: spring-boot-container
         image: danielpacak/spring-boot-k8s-seed:latest
         env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production
         - name: SPRING_CONFIG_LOCATION
           value: /etc/config/application.yml
         ports:
