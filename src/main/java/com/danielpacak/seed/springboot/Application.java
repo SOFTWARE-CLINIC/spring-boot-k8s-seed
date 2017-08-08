@@ -27,6 +27,11 @@ public class Application {
         return System.getenv();
     }
 
+    @RequestMapping("/version")
+    public String version() {
+        return getClass().getPackage().getImplementationVersion();
+    }
+
     @RequestMapping("/config")
     public Config config() {
         return config;
