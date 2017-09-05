@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +18,17 @@ public class Application {
     @Autowired
     private Config config;
 
+    @Autowired
+    private CommandService commandService;
+
     @RequestMapping("/")
     public String home() {
         return "Hello Docker World!";
+    }
+
+    @RequestMapping("/command/output")
+    public String executeCommand(@RequestBody  ExecuteCommandInput input) {
+        return commandService.execute(input.getCommand());
     }
 
     @RequestMapping("/env")

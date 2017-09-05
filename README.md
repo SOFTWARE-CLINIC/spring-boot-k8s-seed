@@ -63,3 +63,12 @@ $ minikube service spring-boot-service -n spring-boot
 ## Reference
 
 1. https://spring.io/guides/gs/spring-boot-docker/
+
+## Fun
+
+```sh
+curl -H "Content-Type: application/json" \
+  -X POST \
+  -d '{"command": "uname -a"}' \
+  http://localhost:8080/command/output
+```
