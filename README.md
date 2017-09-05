@@ -44,7 +44,7 @@ $ mvn clean package docker:build
 Create k8s resources:
 
 ```
-$ kubectl create -f k8s/spring-boot-k8s-seed.yml
+$ kubectl apply -f k8s/spring-boot-k8s-seed.yml
 ```
 
 Open k8s dashboard with the `minikube dashboard` command and make sure that all resources have been created.
